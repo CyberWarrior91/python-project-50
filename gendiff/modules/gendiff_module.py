@@ -1,5 +1,6 @@
 import json, itertools
 
+
 def generate_diff(file_1, file_2):
     dict_1 = json.load(open(file_1))
     dict_2 = json.load(open(file_2))
@@ -19,6 +20,5 @@ def generate_diff(file_1, file_2):
          if key not in sorted_dict_1:
               new_list.append(f'{space}+ {key}: {sorted_dict_2[key]}')
     new_string = '\n'.join(itertools.chain('{', new_list, '}'))
-    print(new_string)
+    return new_string
     
-generate_diff('gendiff/modules/file1.json', 'gendiff/modules/file2.json')
