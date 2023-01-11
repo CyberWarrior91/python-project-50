@@ -7,15 +7,15 @@ def making_list(dict_1, dict_2):
     space = '  '
     for key, value in dict_1.items():
         if key not in dict_2:
-            new_list.append(f'{space}- {key}: {value}')
+            new_list.append(f'{space}- {key}: {str(value).lower()}')
         elif key in dict_2 and value == dict_2[key]:
-            new_list.append(f'{space}  {key}: {value}')
+            new_list.append(f'{space}  {key}: {str(value).lower()}')
         else:
-            new_list.append(f'{space}- {key}: {value}')
-            new_list.append(f'{space}+ {key}: {dict_2[key]}')
+            new_list.append(f'{space}- {key}: {str(value).lower()}')
+            new_list.append(f'{space}+ {key}: {str(dict_2[key]).lower()}')
     for key in dict_2.keys():
         if key not in dict_1:
-            new_list.append(f'{space}+ {key}: {dict_2[key]}')
+            new_list.append(f'{space}+ {key}: {str(dict_2[key]).lower()}')
     return new_list
 
 
