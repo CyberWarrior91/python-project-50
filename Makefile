@@ -3,7 +3,8 @@ build:
 package-install:
 		pip install --user dist/*.whl --force-reinstall
 check:
-		python3 -m pytest
+		poetry run flake8 gendiff
+		pytest
 install:
 		poetry install
 test-coverage:
