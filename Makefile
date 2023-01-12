@@ -1,13 +1,19 @@
-build:
-		poetry build
+install:
+		poetry install
 package-install:
 		pip install --user dist/*.whl --force-reinstall
 lint:
 		poetry run flake8 gendiff
-check:
+test:
 		poetry run pytest
-install:
-		poetry install
 test-coverage:
 		poetry run pytest --cov=gendiff --cov-report xml
+selfcheck:
+		poetry check
+
+check:		selfcheck test lint
+
+build:
+		check
+		poetry build
 
