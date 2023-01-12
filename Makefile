@@ -3,7 +3,7 @@ build:
 package-install:
 		pip install --user dist/*.whl --force-reinstall
 check:
-		pytest
+		python3 -m pytest
 install:
 		poetry install
 test-coverage:
