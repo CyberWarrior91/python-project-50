@@ -2,8 +2,9 @@ build:
 		poetry build
 package-install:
 		pip install --user dist/*.whl --force-reinstall
-check:
+lint:
 		poetry run flake8 gendiff
+check:
 		poetry run pytest
 install:
 		poetry install
