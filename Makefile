@@ -7,4 +7,6 @@ check:
 		pytest
 install:
 		pip install poetry
+test-coverage:
+		coverage report -m
 
