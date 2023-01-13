@@ -9,4 +9,4 @@ def run_argparse(argv=None):
     parser.add_argument('second_file')
     parser.add_argument('-f', '--format', help='set format of output')
     args = parser.parse_args(argv)
-    return args.first_file, args.second_file 
+    return args.first_file, args.second_file

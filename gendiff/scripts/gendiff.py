@@ -1,4 +1,3 @@
-import argparse
 from gendiff.modules.gendiff_module import generate_diff
 from gendiff.modules.argparse_module import run_argparse
 
