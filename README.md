@@ -4,5 +4,9 @@
 <a href="https://codeclimate.com/github/CyberWarrior91/python-project-50/maintainability"><img src="https://api.codeclimate.com/v1/badges/f25c5926e3d066408ca5/maintainability" /></a>
 <a href="https://codeclimate.com/github/CyberWarrior91/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f25c5926e3d066408ca5/test_coverage" /></a>
 
-Example of work with flat types:
+Example of work with flat types(json):
 https://asciinema.org/a/83Bbna2wl4CtDFJ4V0wXYgRKc
+
+Example of work with flat types(yaml):
+https://asciinema.org/a/o8yfd7xp0qdiJJeLkeiNGV4PN
+
