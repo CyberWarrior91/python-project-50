@@ -9,19 +9,19 @@ def making_list(dict_1, dict_2, space_count):
     for key, value in dict_1.items():
         if key not in dict_2:
             new_list.append(f'{space_count}- {key}: {str(value).lower()}')
-        elif key in dict_2 and value == dict_2[key]:
-            new_list.append(f'{space_count}  {key}: {str(value).lower()}')
         elif key in dict_2 and isinstance(dict_1[key], str):
             new_list.append(f'{space_count}  {key}: {value}')
-        else:
+        elif key in dict_2 and dict_1[key] != dict_2[key]:
             new_list.append(f'{space_count}- {key}: {str(value).lower()}')
             new_list.append(f'{space_count}+ {key}: {str(dict_2[key]).lower()}')
+        
+            
     if isinstance(dict_2, dict):
         for key in dict_2.keys():
             if key not in dict_1:
                 new_list.append(f'{space_count}+ {key}: {str(dict_2[key]).lower()}')
     print(new_list)
-    return sorted(new_list)
+    return new_list
 
 
 def open_file(file):
@@ -38,17 +38,23 @@ def generate_diff(file_1, file_2):
     dict_1 = open_file(file_1)
     dict_2 = open_file(file_2)
     def walk(dict_1, dict_2, depth):
-        space = '  '
-        space_count = space * depth
         print(dict_1)
         print(dict_2)
         for key, _ in dict_1.items():
             if isinstance(dict_1[key], dict):
                 dict_1[key] = walk(dict_1[key], dict_2.get(key, {}), depth + 2)
-        
-        new_list = making_list(dict_1, dict_2, space_count)
-        new_string = itertools.chain('{', new_list, [space_count + '}'])
+        space = '  '
+        space_count = space * depth
+        closing_count = space * (depth - 1)
+        if isinstance(dict_2, dict):
+            sorted_dict_1 = dict(sorted(dict_1.items(), key=lambda x: x[0]))
+            sorted_dict_2 = dict(sorted(dict_2.items(), key=lambda x: x[0]))
+            new_list = making_list(sorted_dict_1, sorted_dict_2, space_count)
+        else:
+            new_list = making_list(dict_1, dict_2, space_count)
+        new_string = itertools.chain('{', new_list, [closing_count + '}'])
         return '\n'.join(new_string)
-    return walk(dict_1, dict_2, depth=0)
+    return walk(dict_1, dict_2, depth=1)
+    
 
-print(generate_diff('tests/fixtures/file_3.json', 'tests/fixtures/file_4.json'))
+print(generate_diff('tests/fixtures/file1_nested.json', 'tests/fixtures/file2_nested.json'))
