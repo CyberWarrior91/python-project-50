@@ -3,5 +3,5 @@ __pycache__/
 dist/
 .pytest_cache/
 json_to_yml.py
-tests/fixtures/file_3.json
+/tests/fixtures/file_3.json
 tests/fixtures/file_4.json
