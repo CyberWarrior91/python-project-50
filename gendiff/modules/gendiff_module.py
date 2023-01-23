@@ -4,24 +4,59 @@ from yaml import FullLoader
 import itertools
 
 
-def making_list(dict_1, dict_2, space_count):
-    new_list = []
-    for key, value in dict_1.items():
-        if key not in dict_2:
-            new_list.append(f'{space_count}- {key}: {str(value).lower()}')
-        elif key in dict_2 and isinstance(dict_1[key], str):
-            new_list.append(f'{space_count}  {key}: {value}')
-        elif key in dict_2 and dict_1[key] != dict_2[key]:
-            new_list.append(f'{space_count}- {key}: {str(value).lower()}')
-            new_list.append(f'{space_count}+ {key}: {str(dict_2[key]).lower()}')
-        
-            
-    if isinstance(dict_2, dict):
-        for key in dict_2.keys():
-            if key not in dict_1:
-                new_list.append(f'{space_count}+ {key}: {str(dict_2[key]).lower()}')
-    print(new_list)
-    return new_list
+def generate_uniq_keys_set(dict_1, dict_2):
+    result = set()
+    for key in dict_1.keys():
+        result.add(f'{key}')
+    for key in dict_2.keys():
+        result.add(f'{key}')
+    return sorted(result)
+
+
+def diff_for_mutual_keys(key, dict_1, dict_2, space_count):
+    diff_list = []
+    if dict_1[key] == dict_2[key]:
+        diff_list.append(f'{space_count}  {key}: {dict_1[key]}')
+    elif "\n" and "-" in str(dict_1[key]) and isinstance(dict_2[key], dict):
+        diff_list.append(f'{space_count}  {key}: {dict_1[key]}')
+    else:
+        diff_list.append(f'{space_count}- {key}: {str(dict_1[key]).lower()}')
+        diff_list.append(f'{space_count}+ {key}: {str(dict_2[key]).lower()}')
+    return diff_list
+
+
+def diff_for_different_keys(key, dict_1, dict_2, space_count):
+    diff_list = []
+    if key in dict_1 and not dict_2 or isinstance(dict_2, str):
+        diff_list.append(f'{space_count}  {key}: {dict_1[key]}')
+    elif key not in dict_2:
+        diff_list.append(f'{space_count}- {key}: {str(dict_1[key]).lower()}')
+    elif key in dict_2 and not dict_1 or isinstance(dict_1, str):
+        diff_list.append(f'{space_count}  {key}: {dict_2[key]}')
+    else:
+        diff_list.append(f'{space_count}+ {key}: {str(dict_2[key]).lower()}')
+    return diff_list
+
+
+def making_diff(dict_1, dict_2, space_count):
+    if isinstance(dict_1, dict) and isinstance(dict_2, dict):
+        dict_set = generate_uniq_keys_set(dict_1, dict_2)
+    else:
+        if isinstance(dict_1, dict):
+            dict_set = generate_uniq_keys_set(dict_1, dict_1)
+        else:
+            dict_set = generate_uniq_keys_set(dict_2, dict_2)
+    diff_list = []
+    for key in dict_set:
+        if key in dict_1 and key in dict_2:
+            diff_list.extend(
+                diff_for_mutual_keys(key, dict_1, dict_2, space_count)
+            )
+        else:
+            diff_list.extend(
+                diff_for_different_keys(key, dict_1, dict_2, space_count)
+            )
+    return diff_list
 
 
 def open_file(file):
@@ -34,27 +69,35 @@ def open_file(file):
     return new_dict
 
 
+def make_tree_for_dict_1(dict_1, dict_2, depth, walk):
+    for key in dict_1.keys():
+        if isinstance(dict_1[key], dict):
+            dict_1[key] = walk(dict_1[key], dict_2.get(key, {}), depth + 2)
+
+
+def make_tree_for_dict_2(dict_1, dict_2, depth, walk):
+    for key in dict_2.keys():
+        if dict_2[key] is None:
+            dict_2[key] = 'null'
+        if isinstance(dict_2[key], dict) and '-' not in dict_1.get(key, {}):
+            dict_2[key] = walk(dict_1.get(key, {}), dict_2[key], depth + 2)
+
+
 def generate_diff(file_1, file_2):
     dict_1 = open_file(file_1)
     dict_2 = open_file(file_2)
+
     def walk(dict_1, dict_2, depth):
-        print(dict_1)
-        print(dict_2)
-        for key, _ in dict_1.items():
-            if isinstance(dict_1[key], dict):
-                dict_1[key] = walk(dict_1[key], dict_2.get(key, {}), depth + 2)
+        if isinstance(dict_1, dict):
+            make_tree_for_dict_1(dict_1, dict_2, depth, walk)
+        if isinstance(dict_2, dict) and isinstance(dict_1, dict):
+            make_tree_for_dict_2(dict_1, dict_2, depth, walk)
         space = '  '
         space_count = space * depth
-        closing_count = space * (depth - 1)
-        if isinstance(dict_2, dict):
-            sorted_dict_1 = dict(sorted(dict_1.items(), key=lambda x: x[0]))
-            sorted_dict_2 = dict(sorted(dict_2.items(), key=lambda x: x[0]))
-            new_list = making_list(sorted_dict_1, sorted_dict_2, space_count)
-        else:
-            new_list = making_list(dict_1, dict_2, space_count)
-        new_string = itertools.chain('{', new_list, [closing_count + '}'])
-        return '\n'.join(new_string)
+        closing_space = space * (depth - 1)
+        diff_list = making_diff(dict_1, dict_2, space_count)
+        diff_string = itertools.chain(
+            '{', diff_list, [closing_space + '}']
+        )
+        return '\n'.join(diff_string)
     return walk(dict_1, dict_2, depth=1)
-    
-
-print(generate_diff('tests/fixtures/file1_nested.json', 'tests/fixtures/file2_nested.json'))
