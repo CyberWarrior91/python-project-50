@@ -10,3 +10,5 @@ https://asciinema.org/a/83Bbna2wl4CtDFJ4V0wXYgRKc
 Example of work with flat types(yaml):
 https://asciinema.org/a/o8yfd7xp0qdiJJeLkeiNGV4PN
 
+Example of work with nested types(json and yaml):
+https://asciinema.org/a/p136ldfRFM91yUXjpMBhhVQbI
