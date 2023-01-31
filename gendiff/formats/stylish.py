@@ -1,7 +1,7 @@
+import itertools
 import json
 import yaml
 from yaml import FullLoader
-import itertools
 
 
 def generate_uniq_keys_set(dict_1, dict_2):
@@ -59,16 +59,6 @@ def making_diff(dict_1, dict_2, space_count):
     return diff_list
 
 
-def open_file(file):
-    if file.endswith('json'):
-        new_dict = json.load(open(file))
-    elif file.endswith('yml') or file.endswith('yaml'):
-        new_dict = yaml.load(open(file), Loader=FullLoader)
-    else:
-        raise Exception(f"File '{file}' is wrong format!")
-    return new_dict
-
-
 def make_tree_for_dict_1(dict_1, dict_2, depth, walk):
     for key in dict_1.keys():
         if isinstance(dict_1[key], dict):
@@ -83,10 +73,7 @@ def make_tree_for_dict_2(dict_1, dict_2, depth, walk):
             dict_2[key] = walk(dict_1.get(key, {}), dict_2[key], depth + 2)
 
 
-def get_stylish(file_1, file_2):
-    dict_1 = open_file(file_1)
-    dict_2 = open_file(file_2)
-
+def get_stylish(dict_1, dict_2):
     def walk(dict_1, dict_2, depth):
         if isinstance(dict_1, dict):
             make_tree_for_dict_1(dict_1, dict_2, depth, walk)
@@ -101,3 +88,13 @@ def get_stylish(file_1, file_2):
         )
         return '\n'.join(diff_string)
     return walk(dict_1, dict_2, depth=1)
+
+
+def open_file(file):
+    if file.endswith('json'):
+        new_dict = json.load(open(file))
+    elif file.endswith('yml') or file.endswith('yaml'):
+        new_dict = yaml.load(open(file), Loader=FullLoader)
+    else:
+        raise Exception(f"File '{file}' is wrong format!")
+    return new_dict
