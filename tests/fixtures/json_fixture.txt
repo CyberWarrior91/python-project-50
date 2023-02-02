@@ -1,0 +1,30 @@
+{
+   "type": "root",
+   "children": {
+      "follow": {
+         "key": "follow",
+         "type": "deleted",
+         "value": false
+      },
+      "host": {
+         "key": "host",
+         "type": "stayed"
+      },
+      "proxy": {
+         "key": "proxy",
+         "type": "deleted",
+         "value": "123.234.53.22"
+      },
+      "timeout": {
+         "key": "timeout",
+         "type": "changed value",
+         "value1": 50,
+         "value2": 20
+      },
+      "verbose": {
+         "key": "verbose",
+         "type": "added",
+         "value": true
+      }
+   }
+}

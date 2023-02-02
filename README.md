@@ -16,3 +16,6 @@ https://asciinema.org/a/p136ldfRFM91yUXjpMBhhVQbI
 Example of work with nested types(json and yaml) - plain:
 https://asciinema.org/a/X1b4Ea1hWaO92L6OjAGxbfHQk
 
+Example of work with json formatting(nested):
+https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM
+
