@@ -69,8 +69,9 @@ def make_tree_for_dict_2(dict_1, dict_2, depth, walk):
     for key in dict_2.keys():
         if dict_2[key] is None:
             dict_2[key] = 'null'
-        if isinstance(dict_2[key], dict) and '-' not in dict_1.get(key, {}):
-            dict_2[key] = walk(dict_1.get(key, {}), dict_2[key], depth + 2)
+        if not isinstance(dict_2[key], bool):
+            if isinstance(dict_2[key], dict) and '-' not in dict_1.get(key, {}):
+                dict_2[key] = walk(dict_1.get(key, {}), dict_2[key], depth + 2)
 
 
 def get_stylish(dict_1, dict_2):

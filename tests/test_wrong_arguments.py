@@ -1,5 +1,5 @@
 import pytest
-from gendiff.modules.gendiff_module import open_file
+from gendiff import open_file
 
 
 def test_failed():

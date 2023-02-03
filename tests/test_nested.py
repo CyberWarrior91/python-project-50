@@ -1,6 +1,6 @@
 """Nested data testing"""
 
-from gendiff.modules.gendiff_module import generate_diff
+from gendiff import generate_diff
 
 def test_nested_json():
     fixture = open('tests/fixtures/nested_fixture.txt')
