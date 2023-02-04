@@ -1,7 +1,6 @@
 from gendiff.modules.argparse_module import run_argparse
 
 
-
 def test_run_argparse_json():
     file_paths = run_argparse(['somefile1.json', 'file2.json'])
     assert file_paths == ('somefile1.json', 'file2.json', None)
