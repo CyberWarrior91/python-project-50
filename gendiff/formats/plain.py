@@ -29,10 +29,7 @@ def making_diff(dict_1, dict_2, space_count):
     if isinstance(dict_1, dict) and isinstance(dict_2, dict):
         dict_set = generate_uniq_keys_set(dict_1, dict_2)
     else:
-        if isinstance(dict_1, dict):
-            dict_set = generate_uniq_keys_set(dict_1, dict_1)
-        else:
-            dict_set = generate_uniq_keys_set(dict_2, dict_2)
+        dict_set = dict_set_for_str_values(dict_1, dict_2)
     diff_list = []
     for key in dict_set:
         if key in dict_1 and key in dict_2:
@@ -44,6 +41,14 @@ def making_diff(dict_1, dict_2, space_count):
                 diff_for_different_keys(key, dict_1, dict_2, space_count)
             )
     return diff_list
+
+
+def dict_set_for_str_values(dict_1, dict_2):
+    if isinstance(dict_1, dict):
+        dict_set = generate_uniq_keys_set(dict_1, dict_1)
+    else:
+        dict_set = generate_uniq_keys_set(dict_2, dict_2)
+    return dict_set
 
 
 def check_data_type(value):
