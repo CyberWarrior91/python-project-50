@@ -5,3 +5,5 @@ dist/
 json_to_yml.py
 tests/fixtures/file_3.json
 tests/fixtures/file_4.json
+tests/fixtures/file3_nested.json
+tests/fixtures/file4_nested.json

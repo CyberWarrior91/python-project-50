@@ -1,16 +1,5 @@
 import itertools
-import json
-import yaml
-from yaml import FullLoader
-
-
-def generate_uniq_keys_set(dict_1, dict_2):
-    result = set()
-    for key in dict_1.keys():
-        result.add(f'{key}')
-    for key in dict_2.keys():
-        result.add(f'{key}')
-    return sorted(result)
+from gendiff.modules.generate_uniq_keys import generate_uniq_keys_set
 
 
 def diff_for_mutual_keys(key, dict_1, dict_2, space_count):
@@ -42,10 +31,7 @@ def making_diff(dict_1, dict_2, space_count):
     if isinstance(dict_1, dict) and isinstance(dict_2, dict):
         dict_set = generate_uniq_keys_set(dict_1, dict_2)
     else:
-        if isinstance(dict_1, dict):
-            dict_set = generate_uniq_keys_set(dict_1, dict_1)
-        else:
-            dict_set = generate_uniq_keys_set(dict_2, dict_2)
+        dict_set = dict_set_for_str_values(dict_1, dict_2)
     diff_list = []
     for key in dict_set:
         if key in dict_1 and key in dict_2:
@@ -57,6 +43,14 @@ def making_diff(dict_1, dict_2, space_count):
                 diff_for_different_keys(key, dict_1, dict_2, space_count)
             )
     return diff_list
+
+
+def dict_set_for_str_values(dict_1, dict_2):
+    if isinstance(dict_1, dict):
+        dict_set = generate_uniq_keys_set(dict_1, dict_1)
+    else:
+        dict_set = generate_uniq_keys_set(dict_2, dict_2)
+    return dict_set
 
 
 def make_tree_for_dict_1(dict_1, dict_2, depth, walk):
@@ -93,13 +87,3 @@ def get_stylish(dict_1, dict_2):
         )
         return '\n'.join(diff_string)
     return walk(dict_1, dict_2, depth=1)
-
-
-def open_file(file):
-    if file.endswith('json'):
-        new_dict = json.load(open(file))
-    elif file.endswith('yml') or file.endswith('yaml'):
-        new_dict = yaml.load(open(file), Loader=FullLoader)
-    else:
-        raise Exception(f"File '{file}' is wrong format!")
-    return new_dict
