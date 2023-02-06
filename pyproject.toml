@@ -1,10 +1,16 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "A utility that makes comparison between two json or yml files"
 authors = ["Vladislav25 <vladkhleborodov@gmail.com>"]
 readme = "README.md"
 packages = [{include = "gendiff"},]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Private :: Do Not Upload",
+]
+repository = "https://github.com/CyberWarrior91/python-project-50"
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
