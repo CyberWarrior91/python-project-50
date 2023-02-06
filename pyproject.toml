@@ -8,7 +8,6 @@ packages = [{include = "gendiff"},]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
-    "Private :: Do Not Upload",
 ]
 repository = "https://github.com/CyberWarrior91/python-project-50"
 
