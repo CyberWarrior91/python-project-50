@@ -4,8 +4,20 @@
 <a href="https://codeclimate.com/github/CyberWarrior91/python-project-50/maintainability"><img src="https://api.codeclimate.com/v1/badges/f25c5926e3d066408ca5/maintainability" /></a>
 <a href="https://codeclimate.com/github/CyberWarrior91/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f25c5926e3d066408ca5/test_coverage" /></a>
 
+
+Description:
+This is a utility that compares two json/yml files and shows the result in three different formats:
+stylish
+plain
+json
+
+Requirements:
+python = "^3.10"
+poetry = "^1.2.2"
+
+Videos with examples of utility work
 Example of work with flat types(json):
-https://asciinema.org/a/83Bbna2wl4CtDFJ4V0wXYgRKc
+[![asciicast](https://asciinema.org/a/83Bbna2wl4CtDFJ4V0wXYgRKc.svg)](https://asciinema.org/a/83Bbna2wl4CtDFJ4V0wXYgRKc)
 
 Example of work with flat types(yaml):
 https://asciinema.org/a/o8yfd7xp0qdiJJeLkeiNGV4PN
@@ -18,4 +30,3 @@ https://asciinema.org/a/X1b4Ea1hWaO92L6OjAGxbfHQk
 
 Example of work with json formatting(nested):
 https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM
-
