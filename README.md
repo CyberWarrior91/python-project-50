@@ -20,13 +20,13 @@ Example of work with flat types(json):
 [![asciicast](https://asciinema.org/a/83Bbna2wl4CtDFJ4V0wXYgRKc.svg)](https://asciinema.org/a/83Bbna2wl4CtDFJ4V0wXYgRKc)
 
 Example of work with flat types(yaml):
-https://asciinema.org/a/o8yfd7xp0qdiJJeLkeiNGV4PN
+[![asciicast](https://asciinema.org/a/o8yfd7xp0qdiJJeLkeiNGV4PN.svg)](https://asciinema.org/a/o8yfd7xp0qdiJJeLkeiNGV4PN)
 
 Example of work with nested types(json and yaml) - stylish:
-https://asciinema.org/a/p136ldfRFM91yUXjpMBhhVQbI
+[![asciicast](https://asciinema.org/a/p136ldfRFM91yUXjpMBhhVQbI.svg)](https://asciinema.org/a/p136ldfRFM91yUXjpMBhhVQbI)
 
 Example of work with nested types(json and yaml) - plain:
-https://asciinema.org/a/X1b4Ea1hWaO92L6OjAGxbfHQk
+[![asciicast](https://asciinema.org/a/X1b4Ea1hWaO92L6OjAGxbfHQk.svg)](https://asciinema.org/a/X1b4Ea1hWaO92L6OjAGxbfHQk)
 
 Example of work with json formatting(nested):
-https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM
+[![asciicast](https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM.svg)](https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM)
