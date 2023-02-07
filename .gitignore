@@ -10,3 +10,4 @@ tests/fixtures/file4_nested.json
 coverage.xml
 .coverage
 .coveragerc
+
