@@ -1,2 +1,0 @@
-[run]
-omit = *page_loader.py,  *__init__.py
