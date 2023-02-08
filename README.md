@@ -5,13 +5,15 @@
 <a href="https://codeclimate.com/github/CyberWarrior91/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f25c5926e3d066408ca5/test_coverage" /></a>
 
 
-Description:
+**Description:**
+
 This is a utility that compares two json/yml files and shows the result in three different formats:
 stylish
 plain
 json
 
-Requirements:
+**Requirements:**
+
 python = "^3.10"
 poetry = "^1.2.2"
 
