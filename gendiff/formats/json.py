@@ -1,5 +1,5 @@
 import json
-from gendiff.modules.generate_uniq_keys import generate_uniq_keys_set
+from gendiff.modules.key_generator import generate_uniq_keys_set
 
 
 def diff_for_mutual_keys(key, dict_1, dict_2, space_count):
