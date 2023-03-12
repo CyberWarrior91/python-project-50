@@ -11,4 +11,5 @@ coverage.xml
 .coverage
 .coveragerc
 openfile_module.py
+.swp
 

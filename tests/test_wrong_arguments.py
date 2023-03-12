@@ -1,5 +1,5 @@
 import pytest
-from gendiff import open_file
+from gendiff.format_maker import open_file
 
 
 def test_failed():
