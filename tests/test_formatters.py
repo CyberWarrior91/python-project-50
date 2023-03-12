@@ -23,7 +23,7 @@ nested_plain_result = generate_diff(file1_nested, file2_nested, 'plain')
 nested_json_result = generate_diff(file1_nested, file2_nested, 'json')
 
 
-@pytest.mark.parametrize("result,expected", 
+@pytest.mark.parametrize("result,expected",
                          [(flat_stylish_result, stylish_flat_fixture),
                           (nested_stylish_result, stylish_nested_fixture),
                           (flat_plain_result, plain_flat_fixture),
