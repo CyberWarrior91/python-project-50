@@ -35,7 +35,7 @@ Example of work with nested types(json and yaml) - plain:
 [![asciicast](https://asciinema.org/a/X1b4Ea1hWaO92L6OjAGxbfHQk.svg)](https://asciinema.org/a/X1b4Ea1hWaO92L6OjAGxbfHQk)
 
 Example of work with json formatting(flat):
-[![asciicast](https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM.svg)](https://asciinema.org/a/Di6SE85kZ5071dzhjlAgLV31r)
+[![asciicast](https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM.svg)](https://asciinema.org/a/Di6SE85kZ5071dzhjlAgLV31r))
 
 Example of work with json formatting(nested):
 [![asciicast](https://asciinema.org/a/J5QwtoZ9RMlblbYfKzBRP9HlM.svg)](https://asciinema.org/a/ahIHEantLkWmqqrAcZYOox5sg)
