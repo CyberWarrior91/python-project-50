@@ -25,8 +25,8 @@ def generate_diff(file_1, file_2, format_name='stylish'):
         return get_plain(tree)
     if format_name == 'json':
         return get_json(tree)
-    if format_name == 'stylish':
+    if format_name in ('stylish', None):
         return get_stylish(tree)
     else:
-        raise Exception(f"The format {format_name} \
-            is wrong and cannot be executed.")
+        raise Exception(f"The format {format_name} "
+              f"is wrong and cannot be executed.")
