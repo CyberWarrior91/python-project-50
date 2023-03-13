@@ -21,6 +21,10 @@ def generate_diff(file_1, file_2, format_name='stylish'):
     old_dict = open_file(file_1)
     new_dict = open_file(file_2)
     tree = make_tree(old_dict, new_dict)
+    return formatter(format_name, tree)
+
+
+def formatter(format_name, tree):
     if format_name == 'plain':
         return get_plain(tree)
     if format_name == 'json':
