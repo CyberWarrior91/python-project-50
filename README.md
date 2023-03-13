@@ -8,7 +8,7 @@
 
 **Description:**
 
-This is a utility that compares two json/yml files and shows the result in three different formats: stylish, plain, json
+This is a utility that compares two json/yml files and shows the result in three different formats: stylish, plain or json
 
 #### Clone the repository using this command:
 ```git clone https://github.com/CyberWarrior91/python-project-50.git```
@@ -25,6 +25,7 @@ In order to use commands from Makefile, you need to have **poetry** installed
 Firstly, check your current pip version and upgrade it, if needed:
 
 ```python -m pip --version```
+
 ```python -m pip install --upgrade pip```
 
 Then install Poetry via this link:
@@ -34,6 +35,16 @@ Then install Poetry via this link:
 After successful installation, you need to initiate new poetry package using this command:
 
 ```poetry init```
+
+### Makefile commands:
+
+```make install``` install poetry packages
+
+```make build``` build poetry package and create dist directories
+
+```make package-install``` install built package to start using simple shell commands
+
+```make publish``` publish the project to PyPI after making a build
 
 
 
